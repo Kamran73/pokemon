@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../repository/repository.dart';
 
 part 'auth_cubit.freezed.dart';
-
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -53,6 +52,8 @@ class AuthCubit extends Cubit<AuthState> {
                     state.copyWith(signOutVs: ViewState.completed(data: null))),
                 getIt<SharedPreferences>()
                     .setBool(CommonKeys.IS_LOGGED_IN, false),
+                getIt<SharedPreferences>()
+                    .remove(CommonKeys.FAV_POKEMON_CACHE_KEY),
               });
     });
   }
