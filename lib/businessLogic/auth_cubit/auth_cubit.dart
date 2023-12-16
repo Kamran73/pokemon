@@ -39,7 +39,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signOut() async {
-    emit(state.copyWith(signupVS: ViewState.loading()));
+    emit(state.copyWith(signOutVs: ViewState.loading()));
     await repository.signOut().then((response) async {
       await response.fold(
           (failure) async => {
